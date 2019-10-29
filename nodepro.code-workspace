@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "/Users/cerser/Desktop"
+		},
+		{
+			"path": "/Users/cerser/NodeJsClass"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"liveServer.settings.multiRootWorkspaceName": "NodeJsClass"
+	}
+}
