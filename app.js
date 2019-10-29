@@ -28,9 +28,9 @@ app.get('/Favorites', function(req, res) {
     res.render('Favorites');
 });
 
-app.get('/Family/:name', function(req, res) {
-    res.render('Family', { ID: req.params.name, Qstr: req.query.qstr });
-});
+// app.get('/Family/:name', function(req, res) {
+//     res.render('Family', { ID: req.params.name, Qstr: req.query.qstr });
+// });
 
 app.post('/person', urlencodedParser, function(req, res) {
     res.send('Thank you');
