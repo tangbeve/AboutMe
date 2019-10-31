@@ -13,6 +13,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var jsonParser = bodyParser.json();
 
 
+
 app.use('/assets', express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
