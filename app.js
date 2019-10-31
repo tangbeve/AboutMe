@@ -58,8 +58,9 @@ app.post('/contact', urlencodedParser, function(req, res, next) {
     // console.log(req.body.lastname);
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
+    var email = req.body.email;
 
-    console.log(req.body, firstname);
+    // console.log(req.body, firstname);
 
     var con = mysql.createConnection({
         host: 'localhost',
@@ -71,7 +72,7 @@ app.post('/contact', urlencodedParser, function(req, res, next) {
 
     con.connect();
 
-    var sql = `INSERT INTO test.People (FirstName, LastName) VALUES ("${firstname}","${lastname}") `;
+    var sql = `INSERT INTO test.People (FirstName, LastName,Email) VALUES ("${firstname}","${lastname}","${email}") `;
     console.log(sql);
     con.query(sql,
         function(err) {

@@ -1,41 +1,53 @@
 <html>
 
-<title>Table</title>
-<!-- <h1>
-    <%= myresult[0].FirstName %>
-        <%= myresult[0].LastName %>
-</h1> -->
+<title>Contact List</title>
+<style>
+    body {
+        background-image: url('http://linda-hoang.com/wp-content/uploads/2017/06/Instagrammable-Wall-Pink-Wall-Downtown-1024x768.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 
-<h>My Guest List</h>
+<center>
+    <h>My Contact List</h>
+</center>
 
 <table style="width:100%">
 
     <tr>
         <th>FirstName</th>
         <th>LastName</th>
+        <th>Email</th>
     </tr>
-    <tr>
-        <td>
-            <% for(var i=0; i < myresult.length; i++) { %>
-                <% var FirstName = myresult[i].FirstName; %>
-        </td>
-    </tr>
-</table>
 
-<!-- <form action="/output" type="text" method="post" id="myForm">
-    <select name="droplistname"> 
-    <option value="" >My Guest List</option>
     <% for(var i=0; i < myresult.length; i++) { %>
-        <% var FirstName = myresult[i].FirstName; %> 
-        <option value="<%= FirstName %>"><%= FirstName%></option>
-    <%}%> 
-</select>
-    <button style="background-color: rgba(218, 85, 206, 0.63);" type="button" id="submitBTN"> Submit Form</button>
-    </center>
-</form>
- -->
+        <tr>
+            <td>
+                <center>
+                    <%= myresult[i].FirstName; %>
+                </center>
+            </td>
+
+            <td>
+                <center>
+                    <%= myresult[i].LastName; %>
+                </center>
+            </td>
+
+            <td>
+                <center>
+                    <%= myresult[i].Email; %>
+                </center>
+            </td>
+        </tr>
+
+        <% } %>
+
+</table>
+<div>
+    <center> <button style="background-color: rgba(218, 85, 206, 0.63);"> <a href="/">Home</a></button></center>
+</div>
 
 
 </html>
-<!-- for (var i = 0; i
-< res.length; i++) { table +='<tr><td>' + (i + 1) + '</td><td>' + res[i].Fistname + '</td><td>' + res[i].LastName + '</td></tr>'; } table='<table border="1"><tr><th>FirstName</th><th>LastName</th><th>' + table + '</table>'; </html> -->
