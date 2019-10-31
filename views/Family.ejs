@@ -2,7 +2,8 @@
 <title>Family Page </title>
 
 <head>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+
     <script>
         $(document).ready(function() {
             $("#submitBTN").click(function() {
@@ -34,10 +35,10 @@
                 <option value="<%= output %>"><%= output%></option>
             <%}%> 
         </select>
-            <button style="background-color: rgba(218, 85, 206, 0.63);" type="button" id="submitBTN"> Submit Form</button>
+            <button class="button" style="background-color: rgba(218, 85, 206, 0.63);" type="button" id="submitBTN"> Submit Form</button>
     </center>
     </form>
 
-    <center> <button style="background-color: rgba(218, 85, 206, 0.63);"> <a href="/">Home</a></button></center>
+    <center> <button class="button" style="background-color: rgba(218, 85, 206, 0.63);"> <a href="/">Home</a></button></center>
 
     </html>
