@@ -1,6 +1,16 @@
 <html>
+<title>Family Page </title>
 
 <head>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#submitBTN").click(function() {
+                $("#myForm").submit();
+
+            });
+        });
+    </script>
 
 
 
@@ -12,19 +22,28 @@
         }
     </style>
 
-    <h> My family!</h>
+    <html>
+    <center>
+
+
+        <form action="/family" type="text" method="post" id="myForm">
+            <select name="droplistname"> 
+            <option value="" >Select my fam member</option>
+            <% for(var i=0; i < flist.length; i++) { %>
+                <% var output = flist[i].name; %> 
+                <option value="<%= output %>"><%= output%></option>
+            <%}%> 
+        </select>
+            <button style="background-color: rgba(218, 85, 206, 0.63);" type="button" id="submitBTN"> Submit Form</button>
+    </center>
+    </form>
 
 
 
-    <div>
-        <button type="button" onclick="alert('My first brother!')">Jaylin!</button>
-        <button type="button" onclick="alert('My first sister!')">Kayla!</button>
-        <button type="button" onclick="alert('My second sister!')">TeeTee!</button>
-        <button type="button" onclick="alert('My second brother!')">Jah'King!</button>
-    </div>
 
 
 
-</head>
 
-</html>
+
+
+    </html>

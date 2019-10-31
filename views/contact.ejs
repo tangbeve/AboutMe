@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Simple Contact Form </title>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+
+</head>
+
+<style>
+    body {
+        background-image: url('https://cdn-ep19.pressidium.com/wp-content/uploads/2019/07/photography-aesthetic-bridge-landscape-at-blue-hour.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+
+<body style="background-color: chocolate; ">
+
+    <center>
+        <h2>Contact Form</h2>
+        <!-- Required Div Starts Here -->
+        <form action="/contact" type="text" method="post">
+            <label>First Name: <span>*</span></label>
+            <input type="text " name="firstname" placeholder="First Name " required />
+            <label>Last Name: <span>*</span></label>
+            <input type="text " name="lastname" placeholder="Last Name" requireed/>
+            <label for="msg">Message:</label>
+            <div> <textarea name="user_message" placeholder="Type a message"></textarea></div>
+            <button style="background-color: rgba(218, 85, 206, 0.63);" type="submit" id="submitBTN"> Submit Form</button>
+        </form>
+    </center>
+
+</body>
+
+</html>
