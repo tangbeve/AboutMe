@@ -21,6 +21,30 @@ app.get('/', function(req, res, next) {
 });
 
 
+var Storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, "./public/uploadedimages");
+    },
+    filename: function(req, file, callback) {
+        callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+    }
+});
+
+var upload = multer({
+    storage: Storage
+}).array('imgUploader', 3);
+
+app.post('/api/images', function(req, res) {
+    upload(req, res, function(err) {
+        if (err) {
+            return res.end("Something went wrong!");
+        }
+        return res.end("File uploaded sucessfully!.");
+    });
+});
+
+
+
 app.post('/family', urlencodedParser, function(req, res) {
     var Famname = req.body.droplistname;
     console.log(Famname);
@@ -118,7 +142,13 @@ app.get('/output', function(req, res) {
     con.end();
 });
 
-
+app.delete('/contact', function(req, res) {
+    console.log(req.body);
+    connection.query(`DELETE * FROM People WHERE Submission_ID=?`, [req.body.id], function(error, results, fields) {
+        if (error) throw error;
+        res.end('Record has been deleted!');
+    });
+});
 
 app.get('/api', function(req, res) {
     res.json(flist);

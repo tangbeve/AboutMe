@@ -1,3 +1,7 @@
+h {
+    font-size: 150%;
+}
+
 .button {
     background-color: #4CAF50;
     /* Green */
@@ -34,4 +38,10 @@
 
 div.size {
     font-size: 150%;
+}
+
+.image2 {
+    opacity: 0.5;
+    filter: alpha(opacity=0.1);
+    /* For IE8 and earlier */
 }
