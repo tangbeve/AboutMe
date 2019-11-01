@@ -2,7 +2,6 @@ var express = require('express');
 var app = express();
 var mysql = require('mysql');
 var multer = require('multer');
-// const formidable = require('formidable')
 var obj = {};
 const flist = require('./family.json');
 const bodyParser = require('body-parser')
@@ -10,17 +9,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 var port = process.env.PORT || 3000;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var jsonParser = bodyParser.json();
-
-var storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'uploads')
-    },
-    filename: function(req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-})
-
-var upload = multer({ storage: storage })
 
 
 app.use('/assets', express.static(__dirname + '/public'));
@@ -31,18 +19,6 @@ app.get('/', function(req, res, next) {
     res.render('index');
 
 });
-
-app.post('/upload', upload.single('myFile'), (req, res, next) => {
-    const file = req.file
-    if (!file) {
-        const error = new Error('Please upload a file')
-        error.httpStatusCode = 400
-        return next(error)
-    }
-    res.send(file)
-
-})
-
 
 
 app.post('/family', urlencodedParser, function(req, res) {
