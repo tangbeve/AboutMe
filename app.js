@@ -11,6 +11,18 @@ var port = process.env.PORT || 3000;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var jsonParser = bodyParser.json();
 
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'uploads')
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+})
+
+var upload = multer({ storage: storage })
+
+
 app.use('/assets', express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
@@ -20,13 +32,16 @@ app.get('/', function(req, res, next) {
 
 });
 
-const upload = multer({
-    dest: 'uploadedimages/' // this saves your file into a directory called "uploads"
-});
+app.post('/upload', upload.single('myFile'), (req, res, next) => {
+    const file = req.file
+    if (!file) {
+        const error = new Error('Please upload a file')
+        error.httpStatusCode = 400
+        return next(error)
+    }
+    res.send(file)
 
-app.post('/upload', upload.single('file-to-upload'), (req, res) => {
-    res.redirect('/upload');
-});
+})
 
 
 
@@ -97,22 +112,6 @@ app.post('/contact', urlencodedParser, function(req, res, next) {
 });
 
 
-//         })
-//         .on('end', () => {
-//             res.end()
-//         })
-// });
-
-// app.post('/uploadedimages', (req, res) => {
-//     new formidable.IncomingForm().parse(req)
-//         .on('fileBegin', (name, file) => {
-//             file.path = __dirname + '/uploadedimages/' + file.name
-//         })
-//         .on('file', (name, file) => {
-//             console.log('Uploaded file', name, file)
-//         })
-//         //...
-// });
 
 
 
