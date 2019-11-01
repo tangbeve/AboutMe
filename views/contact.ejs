@@ -35,6 +35,13 @@
             <div> <textarea name="user_message" placeholder="Type a message"></textarea></div>
             <button class="button" style="background-color: rgba(218, 85, 206, 0.63);" type="submit" id="submitBTN"> Submit Form</button>
         </form>
+
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="document" />
+            <input type="submit" />
+        </form>
+
+
         <button class="button" style="background-color: rgba(218, 85, 206, 0.63);"> <a href="/">Home</a></button>
     </center>
 

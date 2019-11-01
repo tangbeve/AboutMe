@@ -1,17 +1,15 @@
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-var nodemailer = require('nodemailer')
+var multer = require('multer');
+// const formidable = require('formidable')
 var obj = {};
 const flist = require('./family.json');
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
-
 var port = process.env.PORT || 3000;
-
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var jsonParser = bodyParser.json();
-
 
 app.use('/assets', express.static(__dirname + '/public'));
 
@@ -21,6 +19,16 @@ app.get('/', function(req, res, next) {
     res.render('index');
 
 });
+
+const upload = multer({
+    dest: 'uploadedimages/' // this saves your file into a directory called "uploads"
+});
+
+app.post('/upload', upload.single('file-to-upload'), (req, res) => {
+    res.redirect('/upload');
+});
+
+
 
 app.post('/family', urlencodedParser, function(req, res) {
     var Famname = req.body.droplistname;
@@ -44,9 +52,9 @@ app.get('/family', function(req, res) {
 
 app.get('/familydetails/:Famname', function(req, res) {
     var Famname = req.params.Famname;
-    var person = flist.filter(item => item.name === Famname);
-    console.log(person[0].name);
-    res.render('familydetails', { person: person[0] });
+    var fam_list = [flist];
+    var person = fam_list.filter(item => item.family[Famname] === Famname);
+    res.render('familydetails', { Famname: Famname, fam_list: fam_list });
 });
 
 app.get('/contact', function(req, res) {
@@ -54,13 +62,10 @@ app.get('/contact', function(req, res) {
 });
 
 app.post('/contact', urlencodedParser, function(req, res, next) {
-    // console.log(req.body.firstname);
-    // console.log(req.body.lastname);
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var email = req.body.email;
 
-    // console.log(req.body, firstname);
 
     var con = mysql.createConnection({
         host: 'localhost',
@@ -89,12 +94,30 @@ app.post('/contact', urlencodedParser, function(req, res, next) {
     );
     con.end();
 
-
 });
 
 
+//         })
+//         .on('end', () => {
+//             res.end()
+//         })
+// });
+
+// app.post('/uploadedimages', (req, res) => {
+//     new formidable.IncomingForm().parse(req)
+//         .on('fileBegin', (name, file) => {
+//             file.path = __dirname + '/uploadedimages/' + file.name
+//         })
+//         .on('file', (name, file) => {
+//             console.log('Uploaded file', name, file)
+//         })
+//         //...
+// });
+
+
+
 app.get('/output', function(req, res) {
-    // res.render('output', { obj: obj });
+
 
     var con = mysql.createConnection({
         host: 'localhost',
@@ -117,6 +140,12 @@ app.get('/output', function(req, res) {
     });
 
     con.end();
+});
+
+
+
+app.get('/api', function(req, res) {
+    res.json(flist);
 });
 
 app.listen(port)

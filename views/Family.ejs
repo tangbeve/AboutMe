@@ -30,12 +30,16 @@
         <form action="/family" type="text" method="post" id="myForm">
             <select name="droplistname"> 
             <option value="" >Select my fam member</option>
-            <% for(var i=0; i < flist.length; i++) { %>
+            <!-- <% for(var i=0; i < flist.length; i++) { %>
                 <% var output = flist[i].name; %> 
                 <option value="<%= output %>"><%= output%></option>
-            <%}%> 
+            <%}%>  -->
+            <option>Brother1</option>
+            <option>Sister1</option>
+            <option>Sister2</option>
+            <option>Brother2</option>
         </select>
-            <button class="button" style="background-color: rgba(218, 85, 206, 0.63);" type="button" id="submitBTN"> Submit Form</button>
+            <button class="button" style="background-color: rgba(218, 85, 206, 0.63);" type="submit" id="submitBTN"> Submit Form</button>
     </center>
     </form>
 

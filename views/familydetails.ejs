@@ -1,10 +1,11 @@
 <html>
 <title> Family Details</title>
+<link rel="stylesheet" type="text/css" href="assets/style.css">
 
 <head>
     <style>
         body {
-            background-image: url('https://cdn-ep19.pressidium.com/wp-content/uploads/2019/07/photography-aesthetic-bridge-landscape-at-blue-hour.jpg');
+            background-image: url('http://linda-hoang.com/wp-content/uploads/2017/06/Instagrammable-Wall-Pink-Wall-Downtown-1024x768.jpg');
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -12,13 +13,60 @@
 
 
     <body>
-        <center>
-            <%= person.name %>
-                <%= person.age %>
+        <div class="size">
+            <center>
+                <% if(Famname === "Brother1") { %>
+                    <% fam_list.forEach(function(item) { %>
+                        <ul>
+                            <li>
+                                <%= item.family.Brother1.name %>
+                            </li>
+                            <li>
+                                <%= item.family.Brother1.age %>
+                            </li>
+                        </ul>
+                        <% })}; %>
+
+                            <% if(Famname === "Sister1") { %>
+                                <% fam_list.forEach(function(item) { %>
+                                    <ul>
+                                        <li>
+                                            <%= item.family.Sister1.name %>
+                                        </li>
+                                        <li>
+                                            <%= item.family.Sister1.age %>
+                                        </li>
+                                    </ul>
+                                    <% })}; %>
+
+                                        <% if(Famname === "Sister2") { %>
+                                            <% fam_list.forEach(function(item) { %>
+                                                <ul>
+                                                    <li>
+                                                        <%= item.family.Sister2.name %>
+                                                    </li>
+                                                    <li>
+                                                        <%= item.family.Sister2.age %>
+                                                    </li>
+                                                </ul>
+                                                <% })}; %>
+
+                                                    <% if(Famname === "Brother2") { %>
+                                                        <% fam_list.forEach(function(item) { %>
+                                                            <ul>
+                                                                <li>
+                                                                    <%= item.family.Brother2.name %>
+                                                                </li>
+                                                                <li>
+                                                                    <%= item.family.Brother2.age %>
+                                                                </li>
+                                                            </ul>
+                                                            <% })}; %>
 
 
-        </center>
-        <center> <button style="background-color: rgba(218, 85, 206, 0.63);"> <a href="/">Home</a></button></center>
+            </center>
+        </div>
+        <center> <button class="button" style="background-color: rgba(179, 93, 171, 0.925);"> <a href="/">Home</a></button></center>
     </body>
 </head>
 

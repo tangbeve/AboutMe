@@ -1,13 +1,20 @@
-[{
-    "name": "Jaylin",
-    "age": 19
-}, {
-    "name": "Kayla",
-    "age": 14
-}, {
-    "name": "TeeTee",
-    "age": 12
-}, {
-    "name": "Jah'King",
-    "age": 1
-}]
+{
+    "family": {
+        "Brother1": {
+            "name": "Jaylin",
+            "age": 19
+        },
+        "Sister1": {
+            "name": "Kayla",
+            "age": 14
+        },
+        "Sister2": {
+            "name": "TeeTee",
+            "age": 12
+        },
+        "Brother2": {
+            "name": "Jah'King",
+            "age": 1
+        }
+    }
+}
