@@ -41,7 +41,8 @@ div.size {
 }
 
 .image2 {
-    opacity: 0.5;
-    filter: alpha(opacity=0.1);
+    opacity: 0.2;
+    filter: alpha(opacity=60);
+    border: 2px solid rgba(185, 127, 197, 0.959);
     /* For IE8 and earlier */
 }
