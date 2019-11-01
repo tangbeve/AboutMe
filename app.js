@@ -142,7 +142,7 @@ app.get('/output', function(req, res) {
     con.end();
 });
 
-app.delete('/contact', function(req, res) {
+app.delete('/delete', function(req, res) {
     console.log(req.body);
     connection.query(`DELETE * FROM People WHERE Submission_ID=?`, [req.body.id], function(error, results, fields) {
         if (error) throw error;
