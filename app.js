@@ -59,7 +59,8 @@ app.post('/contact', urlencodedParser, function(req, res, next) {
 
 
     var con = mysql.createConnection({
-        host: 'localhost',
+        host: '35.243.222.88',
+        // host: 'localhost',
         user: 'root',
         password: 'root1234',
         database: 'test'
